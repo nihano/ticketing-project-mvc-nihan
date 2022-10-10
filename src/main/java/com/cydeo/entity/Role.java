@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Role {
 
-    private long id;
+    private Long id;
     private String description;
 }

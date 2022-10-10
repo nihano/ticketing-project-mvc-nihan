@@ -14,4 +14,12 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addViewController("/").setViewName("login");
     }
 
+    /*
+    we are not passing any data to these pages just view is coming.
+    we can add these to a configuration class which implements
+    WebMvcConfigurer interface. we can define our overridden method
+    and we can define our end point and view like above. We can also
+    do it in controller but this is shorter.
+     */
+
 }

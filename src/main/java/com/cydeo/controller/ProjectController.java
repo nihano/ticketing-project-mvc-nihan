@@ -6,10 +6,7 @@ import com.cydeo.service.ProjectService;
 import com.cydeo.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/project")
@@ -24,7 +21,7 @@ public class ProjectController {
     }
 
     @GetMapping("/create")
-    public String createProject(Model model){
+    public String createProject(Model model) {
         model.addAttribute("project", new ProjectDTO());
         model.addAttribute("managers", userService.findAll());
         model.addAttribute("projects", projectService.findAll());
@@ -33,7 +30,7 @@ public class ProjectController {
     }
 
     @PostMapping("/create")
-    public String insertProject(@ModelAttribute("project") ProjectDTO project){
+    public String insertProject(@ModelAttribute("project") ProjectDTO project) {
 
         /*
         //when creating new project we set the Status to OPEN,
@@ -50,6 +47,15 @@ public class ProjectController {
 
         projectService.save(project);
         return "redirect:/project/create";//this what we see after save we will go project create again so we can use redirect
+
+    }
+
+    @GetMapping("/delete/{projectCode}")
+    public String deleteProject(@PathVariable("projectCode") String projectCode) {
+
+        projectService.deleteById(projectCode);
+
+        return "redirect:/project/create";
 
     }
 }

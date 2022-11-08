@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 public class UserDTO {
     private String firstName;
     private String lastName;
-    private String userName;
+    private String userName; //this is id of UserDTO and email adress?
     private String passWord;
     private boolean enabled;
     private String phone;

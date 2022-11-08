@@ -29,7 +29,7 @@ public class UserController {
     }
 
     @PostMapping("/create")
-    public String insertUser(@ModelAttribute UserDTO user){
+    public String insertUser(@ModelAttribute("user") UserDTO user){
 
         //go to creat html and provide what it needs (user obj, users, roles)
         //we added redirect for same methods we do not need to re-write those
@@ -59,9 +59,10 @@ public class UserController {
     }
 
     @GetMapping("/delete/{username}")
-    public String deleteUser(@PathVariable String username){
+    public String deleteUser(@PathVariable("username") String username){
         //delete the user
         userService.deleteById(username);
+
         return "redirect:/user/create";
     }
 

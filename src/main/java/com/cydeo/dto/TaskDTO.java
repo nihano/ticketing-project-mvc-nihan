@@ -12,6 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class TaskDTO {
 
+    private Long id; //we need a unique id for Task Create
     private ProjectDTO project;
     private UserDTO assignedEmployee;
     private String taskSubject;

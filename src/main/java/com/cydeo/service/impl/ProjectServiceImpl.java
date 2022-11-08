@@ -29,10 +29,20 @@ public class ProjectServiceImpl extends AbstractMapService<ProjectDTO, String> i
     }
     @Override
     public void update(ProjectDTO object) {
+
+        if (object.getProjectStatus()==null){ //in the form there is no project status
+            object.setProjectStatus(findById(object.getProjectCode()).getProjectStatus());//status is already in the database
+        }
         super.update(object.getProjectCode(), object);
     }
     @Override
     public void deleteById(String projectCode) {
         super.deleteById(projectCode);
+    }
+
+    @Override
+    public void complete(ProjectDTO project) {
+
+        project.setProjectStatus(Status.COMPLETE);
     }
 }
